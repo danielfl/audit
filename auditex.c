@@ -47,7 +47,6 @@ int main( )
      struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];     
 
      if ( event->len ) {
-  //    printf("wd %d, cookie %d, len %d, mask %d name %s\n", event->wd, event->cookie, event->len, event->mask, event->name);
      printf("Evento ou arquivo monitorado %s ...\n", event->name);
 
       if ( event->mask & IN_CREATE ) {
