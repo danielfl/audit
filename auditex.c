@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <sys/types.h>
-#include <linux/inotify.h>
+#include <linux/inotify.h> 
 
 #define EVENT_SIZE 	  ( sizeof (struct inotify_event) )
 #define EVENT_BUF_LEN     ( 1024 * ( EVENT_SIZE + 16 ) )
 #define WDIR 		  "/tmp"
+
+//criar recursao com forks para monitorar subdirs
 
 int main( )
 {
@@ -25,16 +27,6 @@ int main( )
 
   //arquivo ou diretorio
   wd = inotify_add_watch( fd, WDIR, IN_CREATE|IN_MODIFY|IN_DELETE);
-
-
-  //struct inotify_event {
-  //      int      wd;       /* Watch descriptor */
-  //      uint32_t mask;     /* Mask of events */
-  //      uint32_t cookie;   /* Unique cookie associating related
-  //                            events (for rename(2)) */
-  //      uint32_t len;      /* Size of name field */
-  //      char     name[];   /* Optional null-terminated name */
-  //  };
 
 
   while ( 1 ) 

@@ -17,9 +17,9 @@ int main (){
 
 	while (res=-1)
 	{
-		usleep(1000000);
 		printf("ok\n");
 		res= inotify_add_watch(fd_inotify, "/tmp/audit", IN_ALL_EVENTS );
+		//incluir read
 	}
 
 	printf("Resultado %d", res);
